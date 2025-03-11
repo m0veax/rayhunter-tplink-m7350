@@ -21,7 +21,7 @@ terminal with path of extracted tar in another one (prefix *terminal*)
 
 *adb*: `mkdir -p /data/rayhunter`
 
-*terminal*: `vi config.toml.example` -> change path for logs to `/mnt/qmdl`
+*terminal*: `vi config.toml.example` -> change path for logs to `/mnt/card/qmdl`
 
 *terminal*: `adb push config.toml.example /tmp/config.toml`
 
@@ -33,7 +33,7 @@ terminal with path of extracted tar in another one (prefix *terminal*)
 
 *adb*: `mv /tmp/rayhunter_daemon /etc/init.d/rayhunter_daemon`
 
-*adb*: `vi /etc/init.d/rayhunter_daemon` -> replace string `/data/rayhunter/rayhunter-daemon` with `/mnt/rayhunter-daemon`
+*adb*: `vi /etc/init.d/rayhunter_daemon` -> replace string `/data/rayhunter/rayhunter-daemon` with `/mnt/card/rayhunter-daemon`
 
 *terminal*: `adb push scripts/misc-daemon /etc/init.d/misc-daemon`
 
