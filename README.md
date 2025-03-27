@@ -33,52 +33,57 @@ TP-Link M7350 mobile hotspot needs to be rooted first. For rooting use one of th
 
 After that, Rayhunter binary can be installed on the device. Manual procedure is the following (we assume you are using (Ubuntu/Debian) Linux environment for installation).
 
-Open two terminals:
-- terminal 1 (adb shell)
-- terminal 2 (local)
+### Prepare the files
 
-**Terminal 1 (adb shell)**:
-```
-adb shell
-mkdir /data/rayhunter
-```
+**First**, download and extract [release v0.1](https://github.com/m0veax/rayhunter-tplink-m7350/releases/tag/test-release-v0.1):
+- download file `release.tar.zip`,
+- unzip it, and you will get file `release.tar`,
+- untar that file and there will be a folder `release`.
 
-Download release file from original EFF repository and unpack it to `~/rayhunter/release`: 
-https://github.com/EFForg/rayhunter/releases/tag/v0.2.5
+Inside `release/` folder are two files you will need:
+- `config.toml.example`
+- `rayhunter-daemon`
 
-**Terminal 2 (local)**:
-```
-cd ~/rayhunter/release
-
-nano config.toml.example
-```
+`config.toml.example` is a text file and you need to edit it to use SD card instead of internal memory. Open the file with any plain text editor, for instance with `nano config.toml.example`.
 
 Now change path for logs to `/media/card/qmdl`. **You must have SD card (SDHC, 32 GB max!) inserted in the device**. Path should be:
 ```
 qmdl_store_path = "/media/card/qmdl"
 ```
+`rayhunter-daemon` is a 32-bit ARM binary file that can run on a TP-Link M7350 device. `file` command shows this:
+```
+rayhunter-daemon: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, BuildID[sha1]=6d10da1d0c9f1994a4e0b6d29a59e0d5446dd73c, for GNU/Linux 3.2.0, stripped
+```
 
-Now download the patch from ping2A:
+Make this file executable:
 ``` 
-mv rayhunter-daemon rayhunter-daemon-old
-wget https://github.com/ping2A/rayhunter/releases/download/test/rayhunter-daemon
 chmod +x rayhunter-daemon
 ```
 
-Copy two files to the device:
+### Copy files to the device
+
+Open two terminals:
+- terminal 1 (we will call it `adb shell`)
+- terminal 2 (we will call it `local`)
+
+**Terminal 1 (adb shell)**, type these commands:
+```
+adb shell
+mkdir /data/rayhunter
+```
+**Terminal 2 (local)**, go to the folder containig `config.toml.example` and `rayhunter-daemon` files, and copy those two files to the device:
 ```
 adb push config.toml.example /data/rayhunter/config.toml
 adb push rayhunter-daemon /media/card/rayhunter-daemon
 ```
 
-**Terminal 1 (adb)**:
+**Terminal 1 (adb)**, type this command:
 ```
 /media/card/rayhunter-daemon /data/rayhunter/config.toml
 ```
-
 On your computer open web browser and go to `http://192.168.0.1:8080`.
 
-It is recommended to disconnect your computer from WiFi or Ethernet (the only connection should be with USB cable to the TP-Link M7350 device). You also need to insert SIM card to the TP-link device.
+If you can not access this URL, disconnect your computer from VPN first, if that does not help, try to disconnect from WiFi and/or Ethernet, so your only connection should be with USB cable to the TP-Link M7350 device. You also need to insert SIM card to the TP-link device if you want that Rayhunter works.
 
 ![Image](https://github.com/user-attachments/assets/ce6df40c-c87d-4adf-ac91-24082643bdeb)
 
@@ -108,6 +113,11 @@ reboot
 ```
 
 After reboot, Rayhunter should be autostarted automatically. You can visit Rayhunter WebUI with your web browser at `http://192.168.0.1:8080`.
+
+
+### Update with new version
+
+For updating (when there will be new release), you just need to copy new `rayhunter-daemon` binary file to the device. Basically you need to `adb shell` to a device, kill currently running `rayhunter-daemon` process, delete old binary from `/media/card/` and `adb push` new binary to the device.
 
 ## Usage
 
