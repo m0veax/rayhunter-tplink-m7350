@@ -24,10 +24,10 @@ TP-Link M7350 needs to be rooted first (we are developing rooting scripts), then
 | v3 | yes, with [open-v3.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v3.sh) script  | yes              |
 | v3.2 | no info               | no info            |
 | v4 | yes, with [open-v4.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v4.sh) script or [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
-| v5 | yes, probably [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | probably yes |
-| v6.2 | yes               | yes |
+| v5 | yes, with [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
+| v6.2 | yes (no further info)              | yes |
 | v7 | no info               | no info |
-| v8 | yes | yes |
+| v8 | yes, with Chrome hack | yes |
 
 Rayhunter may work on other Linux/Qualcomm devices (Orbic and M7350 both have Qualcomm MDM9225 chipset), but has not been tested on them (and you would need to root them first).
 
