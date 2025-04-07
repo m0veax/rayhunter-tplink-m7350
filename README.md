@@ -67,6 +67,8 @@ Make this file executable:
 chmod +x rayhunter-daemon
 ```
 
+**IMPORTANT**: Please note that there is a heavy development undergoing and you can test new version of Rayhunter with built-in display support (green/red line) from [https://github.com/EFForg/rayhunter/actions/runs/14282708750](this build). Use file `rayhunter-daemon-tplink`, extract binary and copy it to the device. This binary was succesfully tested on v3, v4 and v5 hardware revisions.
+
 ### Copy files to the device
 
 Open two terminals:
