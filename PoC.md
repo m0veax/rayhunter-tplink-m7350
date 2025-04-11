@@ -88,7 +88,7 @@ install rayhunter:
 
 *terminal*: `vi config.toml.example` -> change path for logs to `/media/card/qmdl`
 
-*terminal*: `adb config.toml.example /data/rayhunter/config.toml`
+*terminal*: `adb push config.toml.example /data/rayhunter/config.toml`
 
 *terminal*: `adb push rayhunter-daemon /media/card/rayhunter-daemon`
 
