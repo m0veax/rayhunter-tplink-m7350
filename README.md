@@ -141,6 +141,7 @@ If Rayhunter detects something, it will draw red line:
 <img src="https://github.com/user-attachments/assets/4202d40c-0f7b-4ac4-a1a5-39e02b45de51" width=250>
 
 In WebUI you can see the logs:
+
 <img src="https://github.com/user-attachments/assets/96e559c9-3ec7-4fdd-af19-5a2ebd16a0fb" width=250>
 
 ## Frequently Asked Questions
