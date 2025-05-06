@@ -27,8 +27,8 @@ TP-Link M7350 needs to be rooted first (we are developing rooting scripts), then
 | v5 | yes, with [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
 | v6.2 | yes (no further info)              | yes |
 | v7 | no info               | no info |
-| v8 | yes, with Chrome hack | yes |
-| v9 | yes, with Chrome hack | yes, but with small ioctl changes |
+| v8 | yes, with [Chrome hack](https://github.com/gaykitty/rayhunter/pull/2/files#diff-e215113dd2261f4fb6c9b417e8a36f8fde4440ce56d530376a17da89e9c9bbaeR249) | yes |
+| v9 | yes, with [Chrome hack](https://github.com/gaykitty/rayhunter/pull/2/files#diff-e215113dd2261f4fb6c9b417e8a36f8fde4440ce56d530376a17da89e9c9bbaeR249) | probably yes, but [ioctl changes](https://github.com/EFForg/rayhunter/pull/302) are needed |
 
 Rayhunter may work on other Linux/Qualcomm devices (Orbic and M7350 both have Qualcomm MDM9225 chipset), but has not been tested on them (and you would need to root them first).
 
@@ -42,14 +42,13 @@ Manual procedure is the following (we assume you are using (Ubuntu/Debian) Linux
 
 ### Prepare the files
 
-**First**, download and extract [release v0.1](https://github.com/m0veax/rayhunter-tplink-m7350/releases/tag/test-release-v0.1):
-- download file `release.tar.zip`,
-- *unzip* it, and you will get file `release.tar`,
+**First**, download and extract [latest official release from EFF Github (currently v0.2.8)](https://github.com/EFForg/rayhunter/releases/tag/v0.2.8)):
+- download file `release.tar`,
 - *untar* that file and there will be a folder `release`.
 
-Inside `release/` folder are two files you will need:
+Inside `release/` you will need:
 - `config.toml.example`
-- `rayhunter-daemon`
+- in directory `rayhunter-daemon-tplink` use `rayhunter-daemon` file
 
 `config.toml.example` is a text file and you need to edit it to use SD card instead of internal memory. Open the file with any plain text editor, for instance with `nano config.toml.example`.
 
@@ -57,17 +56,15 @@ Now change path for logs to `/media/card/qmdl`. **You must have SD card (SDHC, 3
 ```
 qmdl_store_path = "/media/card/qmdl"
 ```
-`rayhunter-daemon` is a 32-bit ARM binary file that can run on a TP-Link M7350 device. `file` command shows this:
+`rayhunter-daemon` is a 32-bit ARM binary file that can run on a TP-Link M7350 device. `file` command shows something like this:
 ```
-rayhunter-daemon: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, BuildID[sha1]=6d10da1d0c9f1994a4e0b6d29a59e0d5446dd73c, for GNU/Linux 3.2.0, stripped
+rayhunter-daemon: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, BuildID[sha1]=9f0436fecabffa79960bec1118a0e1ed55874d0e, for GNU/Linux 3.2.0, stripped
 ```
 
 Make this file executable:
 ``` 
 chmod +x rayhunter-daemon
 ```
-
-**IMPORTANT**: Please note that there is a heavy development undergoing and you can test new version of Rayhunter with built-in display support (green/red line) from [https://github.com/EFForg/rayhunter/actions/runs/14282708750](this build). Use file `rayhunter-daemon-tplink`, extract binary and copy it to the device. This binary was succesfully tested on v3, v4 and v5 hardware revisions.
 
 ### Copy files to the device
 
@@ -129,6 +126,8 @@ For updating (when there will be new release), you just need to copy new `rayhun
 
 ## Usage
 
+<img src="https://github.com/user-attachments/assets/03f78f43-53f9-44de-a122-2dd01dddc369" width=250>
+
 Once installed, Rayhunter will run automatically whenever your device is running. It serves a web UI that provides some basic controls, such as being able to start/stop recordings, download captures, and view heuristic analyses of captures. You can access this UI in one of two ways:
 
 1. **Over WiFi**: Connect your phone/laptop to the TP-Link M7350 WiFi network and visit `http://192.168.0.1:8080` (click past your browser warning you about the connection not being secure, Rayhunter doesn't have HTTPS yet!)
@@ -136,7 +135,14 @@ Once installed, Rayhunter will run automatically whenever your device is running
 2. **Over USB**: Connect the Orbic device to your laptop via USB, then visit `http://192.168.0.1:8080`.
 
 Please note that if you are using VPN, access to Rayhunter's URL may not work.
- 
+
+If Rayhunter detects something, it will draw red line:
+
+<img src="https://github.com/user-attachments/assets/4202d40c-0f7b-4ac4-a1a5-39e02b45de51" width=250>
+
+In WebUI you can see the logs:
+<img src="https://github.com/user-attachments/assets/96e559c9-3ec7-4fdd-af19-5a2ebd16a0fb" width=250>
+
 ## Frequently Asked Questions
 
 ### Do I need an active SIM card to use Rayhunter?
@@ -182,7 +188,6 @@ Building documentation locally:
 `RUSTDOCFLAGS="--cfg docsrs" cargo doc --no-deps --all-features  --open`
 
 Documentation is then in `target/doc/rayhunter/index.html`.
-
 
 ## LEGAL DISCLAIMER
 Use this program at your own risk. We believe running this program does not currently violate any laws or regulations in the United States or in Europe.
