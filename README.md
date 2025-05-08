@@ -22,7 +22,7 @@ TP-Link M7350 needs to be rooted first (we are developing rooting scripts), then
 | v1 | no info               | no info            |
 | v2 | no info               | no info            |
 | v3 | yes, with [open-v3.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v3.sh) script  | yes              |
-| v3.2 | no               | /            |
+| v3.2 | yes, witg [Rust installer](https://github.com/EFForg/rayhunter/pull/291)  | yes, but some users reported problems with mounting SD card   |
 | v4 | yes, with [open-v4.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v4.sh) script or [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
 | v5 | yes, with [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) or [Chrome hack](https://github.com/gaykitty/rayhunter/pull/2/files#diff-e215113dd2261f4fb6c9b417e8a36f8fde4440ce56d530376a17da89e9c9bbaeR249) | yes |
 | v6.2 | yes (no further info)              | yes |
