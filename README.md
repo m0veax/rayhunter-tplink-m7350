@@ -28,7 +28,7 @@ TP-Link M7350 needs to be rooted first (we are developing rooting scripts), then
 | v6.2 | yes, (according to one report) | yes (according to one report) |
 | v7 | yes, with 0.3.0 installer | yes |
 | v8 | yes, with 0.3.0 installer | yes |
-| v9 | yes, with 0.3.0 installer | probably yes, but should be installed manually and [ioctl changes](https://github.com/EFForg/rayhunter/pull/302) would be needed |
+| v9 | yes, with 0.3.0 installer | probably yes, but should be [installed manually](https://github.com/EFForg/rayhunter/issues/325) and [ioctl changes](https://github.com/EFForg/rayhunter/pull/302) would be needed |
 
 Rayhunter may work on other Linux/Qualcomm devices (Orbic and M7350 both have Qualcomm MDM9225 chipset), but has not been tested on them (and you would need to root them first).
 
