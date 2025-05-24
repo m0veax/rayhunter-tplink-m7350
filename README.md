@@ -17,22 +17,22 @@ TP-Link M7350 mobile hotspot has several hardware revisions - you can see your v
 
 TP-Link M7350 needs to be rooted first (we are developing rooting scripts), then Rayhunter can be installed on it. Please note that **original EFF version** of Rayhunter is currently not working on TP-Link devices, so you will need to install our modified version (see below for detailed instructions).
 
-| HW revision | rooting  | Rayhunter  |
+| HW revision | opening/rooting?  | Rayhunter working?  |
 | :---:   | :---: | :---: |
-| v1 | no info               | no info            |
-| v2 | no info               | no info            |
-| v3 | yes, with [open-v3.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v3.sh) script  | yes              |
-| v3.2 | yes, witg [Rust installer](https://github.com/EFForg/rayhunter/pull/291)  | yes, but some users reported problems with mounting SD card   |
-| v4 | yes, with [open-v4.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v4.sh) script or [tpown](https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
-| v5 | yes, with [this script]([https://github.com/m0veax/rayhunter-tplink-m7350/blob/installer/PoC.md#v4) | yes |
-| v6.2 | yes (no further info)              | yes |
-| v7 | no info               | no info |
-| v8 | yes, with [Chrome hack](https://github.com/gaykitty/rayhunter/pull/2/files#diff-e215113dd2261f4fb6c9b417e8a36f8fde4440ce56d530376a17da89e9c9bbaeR249) | yes |
-| v9 | yes, with [Chrome hack](https://github.com/gaykitty/rayhunter/pull/2/files#diff-e215113dd2261f4fb6c9b417e8a36f8fde4440ce56d530376a17da89e9c9bbaeR249) | probably yes, but [ioctl changes](https://github.com/EFForg/rayhunter/pull/302) are needed |
+| v1 | there was one report that it could be open with [open-v3.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v3.sh) script | no info  |
+| v2 | no info               | no info   |
+| v3 | yes, with 0.3.0 installer | yes   |
+| v3.2 | yes, with 0.3.0 installer | yes |
+| v4 | yes, with [open-v4.sh](https://github.com/m0veax/tplink_m7350/blob/main/open-v4.sh) script (0.3.0 installer has a bug) | yes, but should be installed manually (see below) |
+| v5 | yes, with 0.3.0 installer | yes |
+| v6.2 | yes, (according to one report) | yes (according to one report) |
+| v7 | yes, with 0.3.0 installer | yes |
+| v8 | yes, with 0.3.0 installer | yes |
+| v9 | yes, with 0.3.0 installer | probably yes, but should be installed manually and [ioctl changes](https://github.com/EFForg/rayhunter/pull/302) would be needed |
 
 Rayhunter may work on other Linux/Qualcomm devices (Orbic and M7350 both have Qualcomm MDM9225 chipset), but has not been tested on them (and you would need to root them first).
 
-## Installing Rayhunter
+## Manually installing Rayhunter
 
 TP-Link M7350 mobile hotspot needs to be rooted first. For rooting use one of the methods described in the table above. Also, you will need to install `ADB` on your computer first.
 
@@ -42,7 +42,7 @@ Manual procedure is the following (we assume you are using (Ubuntu/Debian) Linux
 
 ### Prepare the files
 
-**First**, download and extract [latest official release from EFF Github (currently v0.2.8)](https://github.com/EFForg/rayhunter/releases/tag/v0.2.8)):
+**First**, download and extract [latest official release from EFF Github (tested on v0.2.8 release)](https://github.com/EFForg/rayhunter/releases/tag/v0.2.8)):
 - download file `release.tar`,
 - *untar* that file and there will be a folder `release`.
 
