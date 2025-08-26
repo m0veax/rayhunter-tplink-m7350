@@ -1,3 +1,9 @@
+This repository is obsolet, since the TP-Link m7350 Support was integrated into the rayhunter main repository. For install steps and informations visit this repository:
+
+https://github.com/EFForg/rayhunter
+
+---------------------------------------------------
+
 ![Rayhunter Logo - An Orca taking a bite out of a cellular signal bar](https://www.eff.org/files/styles/media_browser_preview/public/banner_library/rayhunter-banner.png)
 # Rayhunter for TP-Link M7350
 
